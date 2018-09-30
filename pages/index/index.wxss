@@ -1,0 +1,100 @@
+/* pages/index/index.wxss */
+page{
+    background-color: #eee;
+}
+.content{
+    background-color: #fff;
+}
+.list{
+    background-color: #fff;
+    height: 20px;
+    padding: 20px;
+}
+
+.slide-image{
+    background-color: #fff;
+    width:100%;
+    height:160px;
+}
+swiper {
+    background-color: #fff;
+    display:block;
+    height:160px;
+}
+.nav{
+    background-color: #fff;
+    margin-bottom: 20rpx;
+    height:125rpx;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.nav view{
+margin:0px 70px;
+justify-content:center;
+display:flex;
+flex-direction:column;
+align-content:center;
+height:125rpx;
+}
+.nav image{
+    height:64rpx;
+    width:64rpx;
+    display:block;
+    margin:0 auto;
+}
+.nav text{
+    color: #999;
+    font-size: 10px;
+    margin:0 auto;
+}
+
+/* 列表 */
+.content{
+	width:100%;
+	height: 72px;
+  margin:8px 0px;
+  margin-left:20px;
+  border-bottom:1px solid #eee;
+  line-height:24px;
+  display:flex;
+  flex-direction:row;
+  overflow: hidden;
+  position: positive;
+}
+.intro{
+	height: 150rpx;
+  width: 70%;
+  display:flex;
+  flex-direction:column;
+
+}
+.img{
+width:180rpx;
+height:130rpx;
+border-radius:5px;
+}
+.list{
+height:100rpx;
+line-height: 50rpx;
+font-size:12px;
+padding:1rpx 18rpx;
+overflow:hidden;
+}
+.time{
+  color:#999;
+  line-height: 10rpx;
+  font-size: 12px;
+  padding-left:425rpx;
+}
+.ear{
+  position:relative;
+  width:38rpx;
+  height:32rpx;
+  left:-595rpx;
+  top:78rpx;
+  background-color:rgb(31, 29, 29);
+  opacity: 0.8;
+  border-radius: 50%;
+  padding: 7rpx;
+}

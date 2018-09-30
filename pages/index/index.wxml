@@ -1,0 +1,36 @@
+<!-- 轮播图 -->
+<swiper indicator-dots="{{indicatorDots}}"
+  autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+  <block wx:for="{{imgUrls}}" wx:key='k1'>
+    <swiper-item>
+      <image src="{{item}}" class="slide-image" width="100%" height="150"/>
+    </swiper-item>
+  </block>
+</swiper>
+<!-- 导航 -->
+<view class='nav'>
+    <navigator url="../../pages/list/list?id=1">
+      <view>
+        <image src="../../images/earphone.png" alt=""></image>
+        <text>悦 听</text>
+      </view>
+    </navigator>
+    <navigator url="../../pages/list/list?id=2">
+      <view>
+          <image src="../../images/book.png" alt=""></image>
+          <text>悦 读</text>
+      </view>
+    </navigator>
+</view>
+<!-- 最新 -->
+<scroll-view scroll-y='true' style='background-color:#fff;' >
+  <navigator wx:for="{{cailist}}" url="../../pages/details/details?id={{item.id}}" wx:key='k2'>
+    <view class='content'>
+      <image src="{{item.albums}}" class='img'></image>
+      <view class='intro'>
+          <view class='list'>{{item.tags}}</view>
+          <view class='time'>09-19</view>
+      </view>
+    </view>
+  </navigator>
+</scroll-view>

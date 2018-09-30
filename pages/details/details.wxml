@@ -1,0 +1,19 @@
+<!--pages/details/details.wxml-->
+<scroll-view scroll-y='true' >
+  <view>
+    <view class='content'>
+        <image src="../../images/640.png" class='img'></image>
+        <!-- 播放器 -->
+        <view class='voice'>
+          <audio bindtimeupdate="MusicStart" bindended="MusicEnd" poster="{{poster}}" name="{{name}}" author="{{author}}" src="{{src}}" id="myAudio" controls loop>
+          <view class="free-MusicProgress">
+            <view style="width:{{progress}}%;"></view>
+          </view>
+          </audio>
+        </view>
+
+	      <view class='details'>{{details}}</view>
+    </view>
+  </view>
+</scroll-view>
+
