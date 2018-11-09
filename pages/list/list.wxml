@@ -1,26 +1,30 @@
 <!-- 介绍 -->
 <view class='info'>
-  <view wx:if="{{id==1}}">
+  <view wx:if="{{itype==1}}">
     <view class='name'>悦听</view>
-    <view class='introinfo'>悦听，用声音温暖你的耳朵。</view>
+    <view class='introinfo'>悦听：用声音温暖你的耳朵。</view>
   </view>
-  <view wx:if="{{id==2}}">
+  <view wx:if="{{itype==2}}">
     <view class='name'>悦读</view>
-    <view class='introinfo'>悦读，休闲时光我们一起来读书。</view>
-  </view> 
+    <view class='introinfo'>悦读：时光悠长，一起感受文字的魅力。</view>
+  </view>
+  <view wx:if="{{itype==3}}">
+    <view class='name'>图画</view>
+    <view class='introinfo'>图画：每个人都是生活的记录者。</view>
+  </view>
 </view>
 <!-- 列表 -->
 <scroll-view scroll-y='true' style='background-color:#fff;' >
   <navigator wx:for="{{cailist}}" url="../../pages/details/details?id={{item.id}}" wx:key='k2'>
     <view class='content'>
-      <image src="{{item.albums}}" class='img'></image>
+      <image src="{{item.thumb}}" class='img'></image>
       <view class='intro'>
-          <view class='list'>{{item.tags}}</view>
-          <view class='time'>09-19</view>
-      </view>
-      <view wx:if="{{id==1}}">
-        <image src="../../images/earphoneX32.png" class='ear'></image>
+          <view class='list'>{{item.title}}</view>
+          <view class='time'>{{item.addtime}}</view>
       </view>
     </view>
   </navigator>
+  <view class="loading" hidden="{{!loading}}">正在载入更多...</view>
+  <view class="loading complete" hidden="{{!loadingComplete}}">已加载全部</view>
+  <view class='copyright'>Copyright © 2018 会宁之声. All Rights Reserved.</view> 
 </scroll-view>

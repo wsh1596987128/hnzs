@@ -9,6 +9,10 @@
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "会宁之声",
     "navigationBarTextStyle": "black",
-    "enablePullDownRefresh": true
-  }
+    "enablePullDownRefresh": false,
+    "onReachBottomDistance": 50
+  },
+  "requiredBackgroundModes": [
+    "audio"
+  ]
 }

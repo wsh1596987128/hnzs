@@ -1,5 +1,5 @@
+@import "/wxParse/wxParse.wxss";
 /* pages/details/details.wxss */
-/* pages/caimenu/caimenu.wxss */
 .content{
 	width:100%;
 	height:auto;
@@ -7,51 +7,90 @@
 .img{
   width:100%;
   padding: 0px;
-  height:98px;
 }
-.title{
-  height: 20px;
-  font-size: 18px;
-  padding: 10px;
-}
-.details{
-  font-size: 12px;
-  line-height:60rpx;
-  padding: 10rpx 25rpx;
-}
-.list{
-  height: 25px;
-  font-size: 14px;
-  padding: 10px 10px;
-}
-.suit{
-  font-size: 14px;
-  padding: 10px 10px;
-  padding-bottom: 10px;
-}
-.stepimg{
-  width: 320px;
-  height: 240px;
-  padding: 25px;
-}
-
-
 /* 播放器 */
-/*语音讲解 */
+.voice{
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between;
+  margin: 0 30rpx;
+  border-radius: 5rpx;
+}
 .voice audio{
   width: 100%;
   position: relative;
   display: flex; 
   justify-content:center;
 }
-audio .free-MusicProgress{
-  position: absolute;
-  width:64.8%;
-  left:25.8%;
-  bottom:1rpx;
-  background:#C3C3C3;
+.t-a{
+  width: 90%;
+  padding-top: 20rpx;
+  padding-bottom: 20rpx;
+  margin-left:15rpx;
+  border-bottom:5rpx solid #eee;
 }
-audio .free-MusicProgress>view{
-  background:#48c23d;
-  height:2px;
+.title{
+  font-size: 34rpx;
+  font-weight:bold;
+  padding-top: 20rpx;
+  padding-left: 35rpx;
+  display: flex;
+  justify-content: left;
+}
+.author{
+  color:#999;
+  font-size: 24rpx;
+  padding-top: 10rpx;
+  padding-left: 35rpx;
+  display: flex;
+  justify-content: left;
+}
+.details{
+  font-size: 30rpx;
+  line-height:60rpx;
+  padding: 10rpx 50rpx;
+}
+/*播放器  */
+.player{
+  height: 135rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between;
+  background-color: #63cdf5;
+  margin: 0 60rpx;
+  border-radius: 10rpx;
+}
+.player .btn image{
+  width: 80rpx;
+  height: 80rpx;
+  margin: 28rpx 25rpx 0;
+}
+.player .time{
+  width: 80%;
+}
+.player .time .time-t{
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between;
+  padding-right: 30rpx;
+  padding-top: 25rpx;
+}
+.player .time .t{
+  font-size: 25rpx;
+  color: #fff;
+  font-weight: 700;
+}
+.player .time .num{
+  font-size: 26rpx;
+  color: #fff;
+  font-weight: 500;
+}
+.player slider{
+  margin: 15rpx 30rpx 0 15rpx;
+}
+.copyright{
+   padding: 30rpx; 
+   font-size:26rpx; 
+   text-align: center;  
+   border-top:5rpx solid #eee; 
 }

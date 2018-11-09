@@ -8,9 +8,9 @@
 		"newFeature": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "1.9.91",
+	"libVersion": "2.3.2",
 	"appid": "wxcafb5719f2ff3c9d",
-	"projectname": "YueDu2",
+	"projectname": "YueDu",
 	"condition": {
 		"search": {
 			"current": -1,

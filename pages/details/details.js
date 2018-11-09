@@ -1,99 +1,122 @@
-// pages/details/details.js
-var API_URL = 'https://apis.juhe.cn/cook/queryid?key=3201e6bae8d5e21f6d12fdbdd0ca6fe4';
-
-
+var API_URL = "https://www.gshnw.com/api/index/getContent.html";
+var WxParse = require('../../wxParse/wxParse.js');
+const myaudio = wx.getBackgroundAudioManager();
 Page({
-
-  /**
-   * 页面的初始数据
-   */
+  //页面的初始数据
   data: {
-    details: '伫立于楼，不远处是一所小学。我从这里开始了34年的中师生之路，且渐渐老去……回溯一塌糊涂的小学老师岁月，头发稀疏面孔清癯的我油然而生出孤独的情愫。且不说一路同行的同事，同学中不乏副县长、副县人大主任，不乏在当地颇有名气的作家、诗人，不乏英年早逝的故人，单说这所小学所带的五四班，圈入群中的30余人也都是儿女成行、步入中年了。唏嘘之余，便想趁着记忆尚且清晰，留下一段文字。从真正意义上，1988年才是我职业生涯的起点，在离县城5公里的一个村落里，我邂逅了后来成为妻子的杨老师。爱情烛照下的农村风情，缱绻旖旎的日子别开生面，质朴无华的小学生，使我爱读书的习性一展无遗，直到1992年父亲去世。父亲在我上中师时已55岁，身患残疾的他手拄拐棍的身影，摇曳于县城某所小学对面的小巷。他在这个世界上生活了66年，留有3个儿子，和一个专门给我做的厚重的书架，还有憨厚待人、耿直豪爽的家风。哦！当时间定格于1992年的春天，我已从教近8年了。虽然仍是一名极为普通的小学老师，但县城小学书记王克运开会宁风气之先的教育理念，加之我手不释卷的阅读，已让我深谙“大师情怀”的分量。机缘凑巧，当年夏天我通过乡政府组织的考试，顺利调入中心小学。后来，时任乡党委书记的王平对我说：“你的作文写得不错，字却写得让人不敢恭维。”王平书记是以书法、文章、政略三绝在当地出了名的，他的话自然是十分公允的。我的字一直写得不好看，直到10年后在教场小学做教务干事的时候才专门练了一段时间，这自是后话了。1992年我和孙元利同志相熟后，便于秋季去他任校长的某小学任教导主任。那时的孙元利年轻果敢，不光亲操教鞭，还别出心裁办校刊《祖厉浪花》，撰写校歌，我成了校刊的编辑。（女儿若干年后也在北京做了出版社的编辑，是女承父业乎？）也许至今在乡教委的档案室里，有厚厚一沓《祖厉浪花》吧？那里面凝聚着我和孙元利之间的一份醇厚的友情呢！当时的小学里有一位名叫王怀智的老师，年长我许多，戴一副深度近视眼镜。我们同处一室办公，他见我爱读书，遂劝我参加自学考试。后来我一路斩关骞旗拿下汉语言文学大专本科21门课程，全是王老师一言相助之功哦。徜徉于自考的大河，沿途不尽的风景，让我着迷，数个寒暑，夜读教材之余，研究儿童早期教育，且于1997年在《白银教育》发表了一篇短文——《小荷才露尖尖角》。那里有我年轻的思绪和身为教师心系女儿成长的拳拳之情！托起明天的太阳，说的是老师对学生的大爱，也是作为父亲对自家孩子的一脉深情！2006年，女儿16岁考上清华大学，使我的人生涂染上了一派金灿灿的靓丽！踏在清华百年老校的土地上，多情的我却心平如镜。人生就是这样，当你的付出得到了丰厚的回馈时，反而没有一点诗兴了。后来，我读到王富葙先生写清华的文章，惊讶于当年送女儿上大学，没有留下一点文字。',
-    poster: 'http://y.gtimg.cn/music/photo_new/T002R300x300M000003rsKF44GyaSk.jpg?max_age=2592000',
-    name: '此时此刻',
-    author: '许巍',
-    src: 'http://ws.stream.qqmusic.qq.com/M500001VfvsJ21xFqb.mp3?guid=ffffffff82def4af4b12b3cd9337d5e7&uin=346897220&vkey=6292F51E1E384E06DCBDC9AB7C49FD713D632D313AC4858BACB8DDD29067D3C601481D36E62053BF8DFEAF74C0A5CCFADD6471160CAF3E6A&fromtag=46',
-    progress:0,
+    details: [],
+    isplay: false,
+    sliderMax: 1,
+    sliderValue: 0,
+    totalProcess: '00:00',
+    currentTime: '00:00'
   },
-  /**音频进度 */
-  MusicStart: function (e) {
-    var autotime = parseInt((e.detail.currentTime / e.detail.duration) * 100)
-    this.setData({
-      progress: autotime
-    })
-  },
-  /**
-   * 生命周期函数--监听页面加载
-   */
-
-  onLoad: function (e) {
-    var that = this;
+  //监听页面加载
+  onLoad: function (e){
+    var that = this
     wx.showToast({
-      title: '加载中。。',
-      icon: "loading",
-      duration: 10000
+      icon: "loading", 
+      title: '加载中...'
     });
     wx.request({
-      url: API_URL + '&id=' + e.id,
+      url: API_URL + '?id=' + e.id,
       header: {
         'content-type': 'application/json'
       },
       success: function (res) {
-        // console.log(res.data.result.data[0]);
-        wx.hideToast();
+        wx.hideToast()
+        if (res.data.data.title.length > 12) {
+          res.data.data.alt = res.data.data.title.substring(0, 12) + '...'
+        } else {
+          res.data.data.alt = res.data.data.title
+        }
         that.setData({
-          //details: res.data.result.data[0]
+          details: res.data.data,
         });
+        if (res.data.data.type == 1) {
+          myaudio.src = res.data.data.media;
+          myaudio.startTime = 0;
+          myaudio.title = res.data.data.title;
+          myaudio.singer = res.data.data.author;
+          myaudio.coverImgUrl = res.data.data.thumb;
+        }
+        var content = res.data.data.content;
+        WxParse.wxParse('content', 'html', content, that, 25);
       }
+    });
+    myaudio.onPlay(() => {
+      myaudio.play();
+      this.setData({ isplay: true });
+    });
+    myaudio.onPause(() => {
+      myaudio.pause();
+      this.setData({ isplay: false });
+    });
+    myaudio.onStop(() => {
+      myaudio.stop();
+      this.setData({ isplay: false });
+    })
+    myaudio.onTimeUpdate(() => {
+      that.timeUpdateData();
     })
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  
+  //播放  
+  play: function () {
+    myaudio.startTime = myaudio.currentTime;
+    myaudio.play();
+    this.setData({ isplay: true });
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-  
+  // 停止  
+  stop: function () {
+    myaudio.pause();
+    this.setData({ isplay: false });
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
+  //实时更新播放时间
+  timeUpdateData: function () {
+    this.setData({
+      sliderMax: parseInt(myaudio.duration) || 1,
+      totalProcess: this.formatSeconds(myaudio.duration),
+      currentTime: this.formatSeconds(myaudio.currentTime),
+      sliderValue: parseInt(myaudio.currentTime) || 0
+    });
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  //时间格式化
+  formatSeconds: function (e) { //将秒数换成时分秒格式
+    var secondTime = parseInt(e);// 秒
+    var minuteTime = 0;// 分
+    var hourTime = 0;// 小时
+    if (secondTime > 59) {//如果秒数大于60，将秒数转换成整数
+      //获取分钟，除以60取整数，得到整数分钟
+      minuteTime = parseInt(secondTime / 60);
+      //获取秒数，秒数取佘，得到整数秒数
+      secondTime = parseInt(secondTime % 60);
+      //如果分钟大于60，将分钟转换成小时
+      if (minuteTime > 59) {
+        //获取小时，获取分钟除以60，得到整数小时
+        hourTime = parseInt(minuteTime / 60);
+        //获取小时后取佘的分，获取分钟除以60取佘的分
+        minuteTime = parseInt(minuteTime % 60);
+      }
+    }
+    var result = "";
+    if (hourTime > 0) {
+      if (hourTime < 10) {
+        hourTime = "0" + hourTime;
+      }
+      result = hourTime + ":";//小时
+    }
+    if (minuteTime > 0) {
+      if (minuteTime < 10) {
+        minuteTime = "0" + minuteTime;
+      }
+      result = result + minuteTime; //分
+    } else {
+      result = "00";
+    }
+    if (secondTime < 10) {
+      secondTime = "0" + secondTime;
+    }
+    result = result + ":" + secondTime; //秒
+    return result;
   }
 })

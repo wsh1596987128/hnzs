@@ -1,19 +1,37 @@
+<import src="/wxParse/wxParse.wxml"/>
 <!--pages/details/details.wxml-->
 <scroll-view scroll-y='true' >
-  <view>
-    <view class='content'>
-        <image src="../../images/640.png" class='img'></image>
-        <!-- 播放器 -->
-        <view class='voice'>
-          <audio bindtimeupdate="MusicStart" bindended="MusicEnd" poster="{{poster}}" name="{{name}}" author="{{author}}" src="{{src}}" id="myAudio" controls loop>
-          <view class="free-MusicProgress">
-            <view style="width:{{progress}}%;"></view>
+  <view class='content'>
+      <image src="{{details.thumb}}" class='img'></image>
+      <!-- 播放器 -->
+      <view wx:if="{{details.type==1}}">
+        <view class='player'>
+          <!--当前为停止状态  -->  
+          <view class='btn'>
+            <view wx:if="{{isplay==false}}" bindtap='play'>         
+              <image src='../../images/stop.png'></image>  
+            </view>  
+            <!--当前为播放状态  -->  
+            <view wx:if="{{isplay==true}}" bindtap='stop'>        
+              <image src='../../images/play.png'></image>      
+            </view> 
           </view>
-          </audio>
+          <view class='time'>
+            <view class='time-t'>
+              <text class='t'>{{details.alt}}</text>
+              <text class='num'>{{currentTime}}/{{totalProcess}}</text>
+            </view> 
+            <slider max='{{sliderMax}}' value="{{sliderValue}}" block-size='10' activeColor='#00fcff' backgroundColor='rgba(255,255,255,0.4)'></slider>
+          </view>          
         </view>
-
-	      <view class='details'>{{details}}</view>
-    </view>
+      </view>
+      <view class='t-a'> 
+        <view class='title'>{{details.title}}</view>
+        <view class='author'>{{details.addtime}} | {{details.author}}</view>
+      </view>      
+      <view class='details'>
+        <template is="wxParse" data="{{wxParseData:content.nodes}}"/>
+      </view>
   </view>
 </scroll-view>
-
+<view class='copyright'>Copyright © 2018 会宁之声. All Rights Reserved.</view> 

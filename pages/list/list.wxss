@@ -1,6 +1,14 @@
 /* pages/list/list.wxss */
 page{
-    background-color: #eee;
+  background-color: #eee;
+}
+.info{
+  width:100%;
+  height: 150rpx;
+  background-color: #fff;
+  margin-bottom:20rpx;
+  align-content: center;
+  padding-top: 1px solid #eee;
 }
 .name{
   padding:10rpx 65rpx;
@@ -8,73 +16,56 @@ page{
 }
 .introinfo{
   padding: 5rpx 65rpx;
-  font-size: 10px;
+  font-size: 24rpx;
   color:#999;
   line-height: 50rpx;
 }
-.content{
-    background-color: #fff;
-}
-.info{
-  width:100%;
-  height: 150rpx;
-  background-color: #fff;
-  margin-bottom:30rpx;
-  align-content: center;
-  padding-top: 1px solid #eee;
-  }
 /* 列表 */
 .content{
-	width:100%;
-	height: 72px;
-  margin:8px 0px;
-  margin-left:20px;
-  border-bottom:1px solid #eee;
-  line-height:24px;
+  background-color: #fff;
+	width:90%;
+	height: 145rpx;
+  margin-top:15rpx;
+  margin-left:35rpx;
   display:flex;
   flex-direction:row;
   overflow: hidden;
   position: positive;
-}
-.intro{
-	height: 150rpx;
-  width: 70%;
-  display:flex;
-  flex-direction:column;
-
-}
-.title{
-  height: 20px;
-  font-size: 12px;
-  padding-left:15px;
-  background-color: #fff;
+  border-bottom:1px solid #eee;
 }
 .img{
-width:180rpx;
-height:130rpx;
-border-radius:5px;
+  width:180rpx;
+  height:130rpx;
+  border-radius:5px;
+}
+.intro{
+  width: 80%;
+  height:130rpx;
+  display:flex;
+  flex-direction:column;
 }
 .list{
-height:105rpx;
-font-size:12px;
-padding:1px 15rpx;
-overflow:hidden;
-}
-.ear{
-  position:relative;
-  width:38rpx;
-  height:32rpx;
-  left:-575rpx;
-  top:85rpx;
-  background-color:rgb(31, 29, 29);
-  opacity: 0.7;
-  border-radius: 50%;
-  padding: 7rpx;
+  height:100rpx;
+  padding: 2rpx 15rpx;
+  line-height: 50rpx;
+  font-size:28rpx;
+  overflow:hidden;
 }
 .time{
   color:#999;
   line-height: 10rpx;
-  font-size: 10px;
-  padding-left:415rpx;
-
+  font-size:24rpx;
+  padding-left:360rpx;
+}
+.loading{  
+   padding: 20rpx; 
+   font-size:24rpx; 
+   text-align: center;  
+   color:#999;  
+}
+.copyright{
+   padding: 30rpx; 
+   font-size:26rpx; 
+   text-align: center; 
+   border-top:1px solid #eee; 
 }
